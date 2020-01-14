@@ -305,7 +305,7 @@
 				DEVELOPMENT_TEAM = YZTT4L7JUR;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/openssl/1.0.2t/include,
-					/usr/local/Cellar/mysql/8.0.18_1/include,
+					/usr/local/Cellar/mysql/8.0.19/include,
 					/usr/local/include,
 					/usr/include,
 				);
@@ -318,8 +318,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/openssl/1.0.2t/lib,
-					/usr/local/Cellar/mysql/8.0.18_1/lib,
 					/usr/local/lib,
 					/usr/lib,
 				);
@@ -347,7 +345,7 @@
 				DEVELOPMENT_TEAM = YZTT4L7JUR;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/openssl/1.0.2t/include,
-					/usr/local/Cellar/mysql/8.0.18_1/include,
+					/usr/local/Cellar/mysql/8.0.19/include,
 					/usr/local/include,
 					/usr/include,
 				);
@@ -360,8 +358,6 @@
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/usr/local/Cellar/openssl/1.0.2t/lib,
-					/usr/local/Cellar/mysql/8.0.18_1/lib,
 					/usr/local/lib,
 					/usr/lib,
 				);
