@@ -51,7 +51,7 @@ Header if CSV format</string>
 		<string>Requires the MySQL clinet and OpenSSL to be installed via brew
 brew install mysql openssl</string>
 		<key>AMDResult</key>
-		<string>Outputs data in CSV, optionally with a header, or Dictionary fomats</string>
+		<string>Outputs data in CSV, Text or List optionally with a header, or Dictionary fomats</string>
 		<key>AMDSummary</key>
 		<string>Runs the query input on the configured connection</string>
 		<key>AMDWebsite</key>

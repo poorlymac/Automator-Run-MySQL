@@ -16,10 +16,10 @@ AMDInput = "SQL Text";
 AMDNote = "Thanks to MySQL for a great database";
 AMDOptions = "MySQL Connection URL
 Row Limit, defaults to 1,000, set to 0 not to limit
-Output format in CSV or Dictionary
-Header if CSV format";
+Output format in CSV, Text, List or Dictionary
+Optional Header if CSV, Text or List format";
 AMDResult = "";
-AMDRequires = "Requires the MySQL clinet and OpenSSL to be installed via brew
+AMDRequires = "Requires the MySQL client and OpenSSL to be installed via brew
 brew install mysql openssl";
 AMDSummary = "Runs the query input on the configured connection";
 AMDWebsite = "N/A";
