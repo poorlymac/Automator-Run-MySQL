@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="Run_MySQL">
             <connections>
                 <outlet property="clientVersion" destination="bAn-xb-daE" id="804-qq-24I"/>
+                <outlet property="delimiter" destination="Y9d-pX-e9E" id="Mbo-8B-7Fh"/>
                 <outlet property="headersCheckbox" destination="Tsj-Q7-oBh" id="BjI-SO-rI2"/>
                 <outlet property="outputFormat" destination="raf-3K-aCx" id="hll-Gr-0Hl"/>
                 <outlet property="rowCounter" destination="zjE-gr-qgE" id="oCV-cI-0Md"/>
@@ -24,7 +25,7 @@
                     <rect key="frame" x="26" y="57" width="30" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="URL:" id="zb1-dv-YjU">
-                        <font key="font" metaFont="menu" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -33,16 +34,34 @@
                     <rect key="frame" x="19" y="33" width="37" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Limit: " id="5v8-we-LCo">
-                        <font key="font" metaFont="menu" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ar3-S2-ANL">
+                    <rect key="frame" x="245" y="10" width="52" height="14"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Delimiter" id="fkj-0x-1iL">
+                        <font key="font" metaFont="controlContent" size="11"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y9d-pX-e9E">
+                    <rect key="frame" x="227" y="6" width="15" height="21"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" title=" " drawsBackground="YES" id="NtJ-nP-ihp">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Be4-AL-bOR">
                     <rect key="frame" x="8" y="11" width="48" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Format: " id="Tpb-I5-3TV">
-                        <font key="font" metaFont="menu" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -51,7 +70,7 @@
                     <rect key="frame" x="62" y="55" width="316" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="mysql://user:pass@localhost:3306/database" drawsBackground="YES" id="ycg-dZ-oGq">
-                        <font key="font" metaFont="menu" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -69,7 +88,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="1000" drawsBackground="YES" id="1pS-JM-vOY">
                         <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Fwy-Vl-xyg"/>
-                        <font key="font" metaFont="menu" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -90,6 +109,8 @@
                         <menu key="menu" id="bKe-Xj-U4l">
                             <items>
                                 <menuItem title="CSV" state="on" id="oYi-lu-uxv"/>
+                                <menuItem title="Text" id="BJM-h0-lUn"/>
+                                <menuItem title="List" id="7IG-VS-PrD"/>
                                 <menuItem title="Dictionary" id="zfQ-30-IrZ"/>
                             </items>
                         </menu>
@@ -102,7 +123,7 @@
                     <rect key="frame" x="117" y="33" width="263" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="left" title="Count ..." id="AGU-pl-h2J">
-                        <font key="font" metaFont="menu" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -115,11 +136,11 @@
                     </connections>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tsj-Q7-oBh">
-                    <rect key="frame" x="162" y="7" width="76" height="20"/>
+                    <rect key="frame" x="162" y="7" width="61" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Header" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="ogq-xO-1Td">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="menu" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                     </buttonCell>
                     <connections>
                         <binding destination="aFj-Nx-tzi" name="value" keyPath="selection.headers" id="T0j-ju-s2p">
@@ -133,7 +154,7 @@
                     <rect key="frame" x="242" y="0.0" width="158" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" alignment="right" title="V..." id="wf0-PE-Yon">
-                        <font key="font" metaFont="menu" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

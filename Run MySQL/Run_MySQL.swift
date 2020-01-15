@@ -18,6 +18,7 @@ class Run_MySQL: AMBundleAction {
     @IBOutlet weak var rowLimit: NSTextField!
     @IBOutlet weak var outputFormat: NSPopUpButton!
     @IBOutlet weak var headersCheckbox: NSButton!
+    @IBOutlet weak var delimiter: NSTextField!
 
     override func run(withInput input: Any?) throws -> Any {
     	// NOTE: In os_log() non-static values are marked <private>, so generated values must be explicitly marked public.
@@ -72,13 +73,22 @@ class Run_MySQL: AMBundleAction {
             throw NSError(domain:"Could not create database connection", code:0, userInfo:nil)
         }
 
-        // Run query
-        var csv = ""
+        // Setup
+        var str = ""
         var hdr = [Int: String]()
         var dat = [String: String]()
+        var arr:[String] = []
         var dic = Array([])
-        
+        let format = outputFormat.titleOfSelectedItem
+        var del = delimiter.stringValue
+        var ret = "\n"
+        // Use CSV rules
+        if(format == "CSV") {
+            del = ","
+            ret = "\r\n"
+        }
 
+        // Run query
         let queryResult = mysql_query(conn, SQL)
         if (queryResult != 0) {
             os_log("Error Running ", SQL)
@@ -96,15 +106,26 @@ class Run_MySQL: AMBundleAction {
                     let columnPtr = mysql_fetch_field_direct(result, UInt32(field))
                     let f: MYSQL_FIELD = columnPtr!.pointee
                     hdr[field] = String(validatingUTF8: f.name) ?? ""
-                    let colName = "\"" + (String(validatingUTF8: f.name) ?? "").replacingOccurrences(of: "\"", with: "\"\"") + "\""
+                    var colName = String(validatingUTF8: f.name) ?? ""
+                    if (format == "CSV") {
+                        colName = "\"" + (colName).replacingOccurrences(of: "\"", with: "\"\"") + "\""
+                    }
                     if (field == fieldCount - 1) {
-                        headertext += "\(colName)\r\n"
+                        if (format == "List") {
+                            headertext += "\(colName)"
+                        } else {
+                            headertext += "\(colName)\(ret)"
+                        }
                     } else {
-                        headertext += "\(colName),"
+                        headertext += "\(colName)\(del)"
                     }
                 }
-                if (headers && outputFormat.titleOfSelectedItem == "CSV") {
-                    csv += headertext
+                if (headers && format != "Dictionary") {
+                    if (format == "List") {
+                        arr.append(headertext)
+                    } else {
+                        str += headertext
+                    }
                 }
                 
                 // Get counts
@@ -123,29 +144,38 @@ class Run_MySQL: AMBundleAction {
                 while row != nil {
                     x += 1
                     var col = ""
+                    var rws = ""
                     for field in 0...(fieldCount - 1) {
                         if let tabPtr = row![field] {
                             col = String(validatingUTF8: tabPtr) ?? ""
                         } else {
                             col = ""
                         }
-                        if (outputFormat.titleOfSelectedItem == "CSV") {
-                            if (col.contains("\"") || col.contains(",") || col.contains("\r") || col.contains("\n")) {
+                        if (format == "Dictionary") {
+                            dat[String(hdr[field]!)] = col
+                        } else {
+                            if (format == "CSV" && (col.contains("\"") || col.contains(",") || col.contains("\r") || col.contains("\n"))) {
                                 col = "\"" + col.replacingOccurrences(of: "\"", with: "\"\"") + "\""
                             }
                             if (field == fieldCount - 1) {
-                                csv += "\(col)\r\n"
+                                if (format == "List") {
+                                    rws += "\(col)"
+                                } else {
+                                    rws += "\(col)\(ret)"
+                                }
                             } else {
-                                csv += "\(col),"
+                                rws += "\(col)\(del)"
                             }
-                        } else {
-                            dat[String(hdr[field]!)] = col
                         }
                     }
-                    if (outputFormat.titleOfSelectedItem == "CSV") {
-                        // Nothing to be done
-                    } else {
+                    if (format == "Dictionary") {
                         dic.append(dat)
+                    } else {
+                        if (format == "List") {
+                            arr.append(rws)
+                        } else {
+                            str += rws
+                        }
                     }
                     
                     // Update progress
@@ -171,10 +201,12 @@ class Run_MySQL: AMBundleAction {
         // os_log("Localized string: %{public}@", localString)
         
         // Return in requested format
-        if (outputFormat.titleOfSelectedItem == "CSV") {
-            return csv
-        } else {
+        if (format == "Dictionary") {
             return dic
+        } else if (format == "List") {
+            return arr
+        } else {
+            return str
         }
     }
 
@@ -220,10 +252,14 @@ class Run_MySQL: AMBundleAction {
     
     // interface action code triggered by a button added to the action view
     @IBAction func actionButton(sender: AnyObject) {
+        headersCheckbox.isEnabled = false
+        delimiter.isEnabled = false
         if (outputFormat.titleOfSelectedItem == "CSV") {
             headersCheckbox.isEnabled = true
-        } else {
-            headersCheckbox.isEnabled = false
+        }
+        if (outputFormat.titleOfSelectedItem == "Text" || outputFormat.titleOfSelectedItem == "List") {
+            headersCheckbox.isEnabled = true
+            delimiter.isEnabled = true
         }
     }
     
