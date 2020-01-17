@@ -1,8 +1,8 @@
 # Automator-Run-MySQL
-An Automator Action in Swift that uses native MySQL libraries to run queries. Please keep in mind this is alpha quality code that I pulled together over a day, that said it works well for me 👍
+An Automator Action in Swift that uses native database libraries to run queries. Please keep in mind this is alpha quality code that I pulled together over a day, that said it works well for me 👍
 
 # Requirements
-Install the MySQL client & OpenSSL using `brew install mysql openssl`
+Install the MySQL & Postgresql client & OpenSSL using `brew install mysql libpq openssl`
 
 # Current Supported Databases
 * [MySQL](https://www.mysql.com) e.g. `mysql://user:password@hostname/database`
